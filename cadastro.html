@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro para Adoção de Animais</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="pag-cadastro">
+
+    <header class="cabecalho">
+        <a href="inicio.html" class="link-logo">
+            <img src="imagens/logo-extensa.png" alt="logo" class="logo-cabecalho">
+        </a>
+
+        <h1 id="cabecalho-h1">Adote um Amigo</h1>
+    </header>
+
+    <div class="form-container">
+        <h2>Cadastro para Adoção</h2>
+        <form action="#" method="post">
+            <label for="nome">Nome Completo</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="idade">Data de Nascimento (Idade)</label>
+            <input type="date" id="idade" name="idade" required>
+
+            <label for="instagram">Perfil do Instagram (Nosso primeiro contato é feito por lá)</label>
+            <input type="text" id="instagram" name="instagram" placeholder="@seuperfil" required>
+
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="telefone">Telefone/Whatsapp</label>
+            <input type="tel" id="telefone" name="telefone" required>
+
+            <label for="endereco">Endereço Completo</label>
+            <input type="text" id="endereco" name="endereco" required>
+
+            <label for="animais">Você mora em?</label>
+            <select id="animais" name="animais" required>
+                <option value="sim">Casa</option>
+                <option value="nao">Apartamento</option>
+                <option value="sim">Outro</option>
+            </select>
+
+            <label for="motivo">Por que você deseja adotar um animal?</label>
+            <textarea id="motivo" name="motivo" rows="4" maxlength="500" required></textarea>
+
+            <label for="porte">Qual o porte do animal que você deseja adotar?</label>
+            <select id="porte" name="porte" required>
+                <option value="pequeno">Pequeno</option>
+                <option value="medio">Médio</option>
+                <option value="grande">Grande</option>
+            </select>
+
+            <label for="experiencia">Está de acordo com a entrevista por videochamada e a taxa de contribuição de 200 reais caso seja aprovado?</label>
+            <select id="experiencia" name="experiencia" required>
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+            </select>
+
+            <label for="expectativa">Qual o nome do animal que você deseja adotar?</label>
+            <textarea id="expectativa" name="expectativa" rows="4" required></textarea>
+
+            <input type="submit" value="Cadastrar para Adoção">
+        </form>
+    </div>
+
+    <footer class="rodape">
+        <div class="sobre-rodape">
+            <img src="imagens/logo-extensa.png" alt="logo extensa">
+            <p>Somos uma ONG que resgata animais em situação de rua e maus tratos, cuidados e direcionamos para adoções
+                responsáveis.</p>
+        </div>
+        <div class="contato-rodape">
+            <a
+                href="https://www.google.com/maps?q=Av.+Jos%C3%A9+Estima+Filho+-+Parque+Santa+Barbara,+S%C3%A3o+Paulo+-+SP,+Brasil"><img
+                    src="imagens/mapa.jpg" alt="mapa" class="mapa"></a>
+            <p>Endereço: Av. José Estima Filho - Jardim Ângela</p>
+        </div>
+    </footer>
+
+</body>
+</html>
