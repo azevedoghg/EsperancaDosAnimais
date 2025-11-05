@@ -351,3 +351,77 @@ a{
 .form-container input[type="submit"]:hover {
     background-color: #003f7f;
 }
+
+/*
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .form-container {
+                padding: 20px;
+                margin: 20px;
+            }
+
+            .form-container h2 {
+                font-size: 24px;
+            }
+
+            .form-container input,
+            .form-container select,
+            .form-container textarea {
+                font-size: 14px;
+            }
+
+            .form-container input[type="submit"] {
+                font-size: 16px;
+                padding: 12px;
+            }
+
+            .footer {
+                padding: 20px 10px;
+            }
+
+            .footer p {
+                font-size: 16px;
+            }
+        }
+
+       
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 20px;
+                margin-left: 10px;
+            }
+
+            .form-container {
+                max-width: 100%;
+                padding: 15px;
+                margin: 10px;
+            }
+
+            .form-container h2 {
+                font-size: 22px;
+            }
+
+            .form-container input,
+            .form-container select,
+            .form-container textarea {
+                font-size: 12px;
+            }
+
+            .form-container input[type="submit"] {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            .footer {
+                padding: 15px 5px;
+            }
+
+            .footer p {
+                font-size: 14px;
+            }
+        }
+*/

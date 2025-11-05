@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Painel Administrativo</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: rgb(4, 73, 172);
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header class="cabecalho">
+        <a href="inicio.html" class="link-logo">
+            <img src="imagens/logo-extensa.png" alt="logo" class="logo-cabecalho">
+        </a>
+        <h1 id="cabecalho-h1">Acesso Restrito</h1>
+    </header>
+
+    <div class="login-container">
+        <h2>Login Administrativo</h2>
+        <form id="login-form">
+            <input type="text" id="username" name="username" placeholder="Utilizador" required>
+            <input type="password" id="password" name="password" placeholder="Senha" required>
+            <div id="error-message" style="color:red; margin-bottom: 15px;"></div>
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const errorMessage = document.getElementById('error-message');
+            errorMessage.textContent = '';
+
+            try {
+                const response = await fetch('api/login.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+
+                if (result.success) {
+                    // Redireciona para o painel de cadastros após o login
+                    window.location.href = 'admin_cadastros.php';
+                } else {
+                    errorMessage.textContent = result.error || 'Utilizador ou senha inválidos.';
+                }
+            } catch (error) {
+                errorMessage.textContent = 'Erro de comunicação com o servidor.';
+            }
+        });
+    </script>
+</body>
+</html>
