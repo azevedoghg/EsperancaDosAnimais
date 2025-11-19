@@ -5,10 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel - Cadastrar Animal</title>
-    
-    <!-- Adiciona uma base de URL para que todos os links (CSS, actions) funcionem corretamente -->
-    <href="/projeto-adocao/">
-
     <link rel="stylesheet" href="style.css">
 </head>
 <body id="pag-admin">
@@ -26,7 +22,7 @@
             <h2>Cadastrar Novo Animal</h2>
             
             <?php
-            // Exibe mensagens de sucesso ou erro que são passadas via URL
+            // Exibe mensagens de sucesso ou erro vindas da URL
             if (isset($_GET['status']) && $_GET['status'] == 'success') {
                 echo '<p class="mensagem-sucesso">Animal cadastrado com sucesso!</p>';
             }
@@ -35,7 +31,8 @@
             }
             ?>
 
-            <form action="api/cadastros/criar.php" method="POST" enctype="multipart/form-data">
+            <!-- CORREÇÃO CRÍTICA: Action aponta para o arquivo correto na pasta API -->
+            <form action="api/animais/criar_animal.php" method="POST" enctype="multipart/form-data">
                 
                 <label for="nome">Nome do Animal:</label>
                 <input type="text" id="nome" name="nome" required>
@@ -86,4 +83,3 @@
     </main>
 </body>
 </html>
-
