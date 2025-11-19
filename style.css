@@ -339,19 +339,18 @@ a {
 .cabecalho-admin { background-color: #333; color: white; padding: 20px; display: flex; justify-content: space-between; }
 .cabecalho-admin nav a { color: #ccc; margin-left: 15px; }
 
-/*---------------NOS APOIE (CORRIGIDO)---------------*/
+/*---------------NOS APOIE (PIX)---------------*/
 #section-doacao, #section-adocao {
     max-width: 1200px;
     margin: 50px auto;
     display: flex;
-    flex-wrap: wrap; /* Permite que o conteúdo se organize em linhas */
+    flex-wrap: wrap;
     justify-content: space-between;
-    align-items: flex-start; /* Alinha itens ao topo */
+    align-items: flex-start;
     color: white;
     padding: 0 20px;
 }
 
-/* Força o título a ocupar uma linha inteira no topo */
 #titulo-doacao, #titulo-adocao {
     width: 100%; 
     text-align: center; 
@@ -361,23 +360,19 @@ a {
     padding-bottom: 10px;
 }
 
-/* Caixa de texto à esquerda */
 #texto-doacao, #texto-adocao {
-    width: 48%; /* Quase metade da tela */
+    width: 48%;
     font-size: 18px;
     text-align: justify;
-    background-color: rgba(0, 0, 0, 0.2); /* Fundo escuro para leitura */
+    background-color: rgba(0, 0, 0, 0.2);
     padding: 30px;
     border-radius: 15px;
     margin-bottom: 20px;
+    height: auto; 
 }
 
-#texto-doacao h2, #texto-adocao h2 {
-    color: #ffcc00;
-    margin-bottom: 20px;
-}
+#texto-doacao h2, #texto-adocao h2 { color: #ffcc00; margin-bottom: 20px; }
 
-/* Container do QR Code/Imagem à direita */
 #area-pix, #apresentacao-adocao {
     width: 48%;
     text-align: center;
@@ -386,10 +381,9 @@ a {
     align-items: center;
 }
 
-/* QR Code com tamanho controlado */
 #qr-code {
     width: 100%;
-    max-width: 250px; /* Impede que fique gigante */
+    max-width: 250px;
     margin-bottom: 20px;
     background-color: white;
     padding: 10px;
@@ -397,7 +391,6 @@ a {
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-/* Imagem do Abrigo */
 #abrigo-img {
     width: 100%;
     max-width: 500px;
@@ -406,7 +399,103 @@ a {
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-/* Responsividade para celulares */
+.pix-copia-box {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 400px;
+    margin: 10px auto;
+    background-color: white;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.pix-copia-box input {
+    flex: 1;
+    padding: 8px 10px;
+    border: none;
+    background-color: transparent;
+    color: #333;
+    font-family: monospace;
+    font-size: 14px;
+    outline: none;
+    min-width: 0; 
+}
+
+.pix-copia-box button {
+    width: auto; 
+    padding: 8px 20px;
+    background-color: #28a745; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    white-space: nowrap; 
+}
+
+.pix-copia-box button:hover { background-color: #218838; }
+
+
+/*---------------SOBRE NÓS (NOVO)---------------*/
+.section-sobrenos {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo-sobrenos {
+    font-size: 40px;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    border-bottom: 3px solid #ffcc00;
+    display: inline-block;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.texto-sobrenos {
+    background-color: rgba(0, 0, 0, 0.2); /* Caixa escura translúcida */
+    padding: 40px;
+    border-radius: 15px;
+    font-size: 18px;
+    line-height: 1.8;
+    text-align: justify;
+    margin-bottom: 60px;
+    width: 100%;
+    max-width: 1000px; /* Limita largura para não ficar cansativo de ler */
+}
+
+.galeria-sobrenos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.galeria-sobrenos img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 4px solid #ffcc00;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s;
+}
+
+.galeria-sobrenos img:hover {
+    transform: scale(1.05);
+}
+
+
+/* Responsividade Geral */
 @media (max-width: 768px) {
     .cabecalho { flex-direction: column; height: auto; padding: 20px; }
     .nav-cabecalho { margin-top: 15px; display: flex; flex-direction: column; gap: 10px; text-align: center; }
@@ -416,7 +505,7 @@ a {
         text-align: center; 
     }
     
-    .texto-inicio, #texto-doacao, #texto-adocao, #area-pix, #apresentacao-adocao { 
+    .texto-inicio, #texto-doacao, #texto-adocao, #area-pix, #apresentacao-adocao, .texto-sobrenos { 
         width: 100%; 
         max-width: 100%; 
     }

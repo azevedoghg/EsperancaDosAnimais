@@ -41,9 +41,17 @@
             <p><span class="negrito">Chave PIX:</span> (11) 97766-5800</p>
             <p><span class="negrito">Nome:</span> Renato Del Nero</p>
             <p><span class="negrito">Tipo de Chave:</span> Telefone</p>
-            <p style="margin-top: 15px;"><span class="negrito">Código QrCode (Copia e Cola):</span></p>
-            <!-- A classe 'pix-code' será usada no CSS para quebrar a linha -->
-            <p class="pix-code">00020126360014BR.GOV.BCB.PIX0114+55119776658005204000053039865802BR5915Renato Del Nero6014Sao Paulo - SP62070503***6304D156</p>
+            
+            <p style="margin-top: 20px; margin-bottom: 5px;"><span class="negrito">Pix Copia e Cola:</span></p>
+            
+            <!-- Nova Área de Copiar -->
+            <div class="pix-copia-box">
+                <!-- O input readonly permite copiar mas o usuário não pode editar -->
+                <input type="text" id="pix-key" value="00020126360014BR.GOV.BCB.PIX0114+55119776658005204000053039865802BR5915Renato Del Nero6014Sao Paulo - SP62070503***6304D156" readonly>
+                <button onclick="copiarPix()" id="btn-copiar">Copiar</button>
+            </div>
+            <!-- Mensagem de sucesso escondida por padrão -->
+            <p id="msg-copiado" style="display:none; color: #76ff03; margin-top: 5px; font-weight: bold; text-shadow: 1px 1px 2px black;">Copiado com sucesso!</p>
         </div>
     </section>
 
@@ -74,6 +82,29 @@
             <p>Endereço: Av. José Estima Filho - Jardim Ângela</p>
         </div>
     </footer>
+
+    <script>
+        function copiarPix() {
+            // Seleciona o campo de texto
+            var copyText = document.getElementById("pix-key");
+            
+            // Seleciona o texto no campo (essencial para mobile funcionar bem)
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // Para dispositivos móveis
+
+            // Executa o comando de cópia
+            document.execCommand("copy");
+
+            // Feedback visual (Mensagem de sucesso)
+            var msg = document.getElementById("msg-copiado");
+            msg.style.display = "block";
+            
+            // Esconde a mensagem após 3 segundos
+            setTimeout(function() {
+                msg.style.display = "none";
+            }, 3000);
+        }
+    </script>
 
 </body>
 </html>
