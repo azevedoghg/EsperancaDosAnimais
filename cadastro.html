@@ -1,67 +1,126 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro para Adoção de Animais</title>
+    <title>Cadastro para Adoção</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Ícones para melhorar a usabilidade -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body id="pag-cadastro">
 
     <header class="cabecalho">
         <a href="inicio.html" class="link-logo">
-            <img src="imagens/logo-extensa.png" alt="Logo ONG" class="logo-cabecalho"/>
+            <img src="imagens/logo-extensa.png" alt="Logo ONG" class="logo-cabecalho" />
         </a>
-        <h1 id="cabecalho-h1">Formulário de Adoção</h1>
+        <nav class="nav-cabecalho">
+            <a href="inicio.html">Início</a>
+            <a href="Sobrenos.html">Sobre Nós</a>
+            <a href="adote.html">Adote</a>
+            <a href="nos-apoie.html">Nos Apoie</a>
+            <a href="faleconosco.html">Fale Conosco</a>
+        </nav>
     </header>
 
-    <div class="form-container">
-        <h2>Seus Dados</h2>
-        <form id="form-adocao">
-            <label for="nome">Nome Completo</label>
-            <input type="text" id="nome" name="nome" required>
+    <div class="main-cadastro-container">
+        <div class="form-card">
+            <div class="form-header">
+                <h1><i class="fas fa-heart"></i> Formulário de Adoção</h1>
+                <p>Ficamos felizes com seu interesse! Preencha os dados abaixo para conhecermos melhor você.</p>
+            </div>
 
-            <label for="nascimento">Data de Nascimento</label>
-            <input type="date" id="nascimento" name="nascimento" required>
+            <form id="form-adocao">
+                
+                <!-- Seção 1: Sobre o Animal -->
+                <h3 class="section-title"><i class="fas fa-paw"></i> Qual animal você deseja adotar?</h3>
+                <div class="form-group">
+                    <label for="animal_desejado">Nome do Animal</label>
+                    <input type="text" id="animal_desejado" name="animal_desejado" required readonly class="input-readonly">
+                    <small class="form-text text-muted">Este campo é preenchido automaticamente ao clicar em "Adotar" na página anterior.</small>
+                </div>
 
-            <label for="instagram">Perfil do Instagram (Nosso primeiro contato é por lá)</label>
-            <input type="text" id="instagram" name="instagram" placeholder="@seuperfil" required>
+                <!-- Seção 2: Dados Pessoais -->
+                <h3 class="section-title"><i class="fas fa-user"></i> Seus Dados</h3>
+                
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+                </div>
 
-            <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nascimento">Data de Nascimento</label>
+                        <input type="date" id="nascimento" name="nascimento" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="instagram">Instagram</label>
+                        <input type="text" id="instagram" name="instagram" placeholder="@seu.perfil" required>
+                    </div>
+                </div>
 
-            <label for="telefone">Telefone/Whatsapp</label>
-            <input type="tel" id="telefone" name="telefone" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone / WhatsApp</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="(XX) 9XXXX-XXXX" required>
+                    </div>
+                </div>
 
-            <label for="endereco">Endereço Completo</label>
-            <input type="text" id="endereco" name="endereco" required>
+                <!-- Seção 3: Endereço e Moradia -->
+                <h3 class="section-title"><i class="fas fa-home"></i> Onde você mora?</h3>
+                
+                <div class="form-group">
+                    <label for="endereco">Endereço Completo</label>
+                    <input type="text" id="endereco" name="endereco" placeholder="Rua, Número, Bairro, Cidade" required>
+                </div>
 
-            <label for="tipo_moradia">Você mora em?</label>
-            <select id="tipo_moradia" name="tipo_moradia" required>
-                <option value="Casa">Casa</option>
-                <option value="Apartamento">Apartamento</option>
-                <option value="Outro">Outro</option>
-            </select>
+                <div class="form-group">
+                    <label for="tipo_moradia">Tipo de Moradia</label>
+                    <select id="tipo_moradia" name="tipo_moradia" required>
+                        <option value="" disabled selected>Selecione...</option>
+                        <option value="Casa">Casa</option>
+                        <option value="Apartamento">Apartamento</option>
+                        <option value="Sítio/Chácara">Sítio / Chácara</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
 
-            <label for="motivo">Por que você deseja adotar um animal?</label>
-            <textarea id="motivo" name="motivo" rows="4" maxlength="500" required></textarea>
+                <!-- Seção 4: Perguntas Importantes -->
+                <h3 class="section-title"><i class="fas fa-question-circle"></i> Perguntas Rápidas</h3>
 
-            <label for="outros_animais">Você possui outros animais?</label>
-            <textarea id="outros_animais" name="outros_animais" rows="2"></textarea>
+                <div class="form-group">
+                    <label for="motivo">Por que você deseja adotar?</label>
+                    <textarea id="motivo" name="motivo" rows="3" maxlength="500" placeholder="Conte um pouco sobre sua motivação..." required></textarea>
+                </div>
 
-            <label for="concorda_termos">Está de acordo com a entrevista por videochamada e a taxa de contribuição de R$200,00 caso seja aprovado(a)?</label>
-            <select id="concorda_termos" name="concorda_termos" required>
-                <option value="">Selecione</option>
-                <option value="1">Sim</option>
-                <option value="0">Não</option>
-            </select>
+                <div class="form-group">
+                    <label for="outros_animais">Possui outros animais? Se sim, quais?</label>
+                    <textarea id="outros_animais" name="outros_animais" rows="2" placeholder="Ex: Tenho um gato de 3 anos castrado."></textarea>
+                </div>
 
-            <label for="animal_desejado">Nome do animal que você deseja adotar</label>
-            <input type="text" id="animal_desejado" name="animal_desejado" required readonly style="background-color: #e9ecef;">
+                <div class="form-group checkbox-group">
+                    <label for="concorda_termos">
+                        <input type="checkbox" id="concorda_termos_check" required onchange="atualizarSelect(this)">
+                        Estou ciente da entrevista por videochamada e da taxa de contribuição de R$200,00 (caso aprovado).
+                    </label>
+                    <!-- Campo oculto para enviar valor 1 ou 0 para o banco -->
+                    <select id="concorda_termos" name="concorda_termos" style="display:none;">
+                        <option value="0">Não</option>
+                        <option value="1">Sim</option>
+                    </select>
+                </div>
 
-            <button type="submit" id="submit-button">Enviar Cadastro</button>
-        </form>
+                <button type="submit" id="submit-button" class="btn-enviar">
+                    <i class="fas fa-paper-plane"></i> Enviar Cadastro
+                </button>
+            </form>
+        </div>
     </div>
 
     <footer class="rodape">
@@ -76,67 +135,63 @@
     </footer>
 
     <script>
-        // Função para preencher o nome do animal a partir da URL
+        function atualizarSelect(checkbox) {
+            const select = document.getElementById('concorda_termos');
+            select.value = checkbox.checked ? "1" : "0";
+        }
+
         function preencherAnimal() {
             const urlParams = new URLSearchParams(window.location.search);
             const nomeAnimal = urlParams.get('animal');
+
             if (nomeAnimal) {
-                // Decodifica o nome do animal que vem da URL (ex: espaços %20 viram espaços normais)
                 document.getElementById('animal_desejado').value = decodeURIComponent(nomeAnimal);
             } else {
-                document.getElementById('animal_desejado').value = "Nenhum animal selecionado";
+                document.getElementById('animal_desejado').value = "Nenhum animal selecionado (Vá em 'Adote')";
             }
         }
 
-        // Função para enviar os dados do formulário para a API
         async function enviarFormulario(event) {
-            event.preventDefault(); // Impede o recarregamento da página
-
+            event.preventDefault();
             const form = document.getElementById('form-adocao');
             const button = document.getElementById('submit-button');
             const formData = new FormData(form);
-            
+
             button.disabled = true;
-            button.textContent = 'Enviando...';
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
 
             try {
-                // O caminho relativo 'api/...' funciona corretamente quando a página
-                // é acedida a partir do mesmo servidor (localhost)
                 const response = await fetch('api/cadastros/criar_cadastro.php', {
                     method: 'POST',
                     body: formData
                 });
-                
-                // Verifica se a resposta da API é válida antes de tentar ler como JSON
+
                 if (!response.ok) {
-                    // Tenta obter mais detalhes do erro do servidor
                     const errorText = await response.text();
-                    throw new Error(`Erro na API: ${response.statusText}. Detalhes: ${errorText}`);
+                    throw new Error(`Erro na API: ${response.statusText}`);
                 }
 
                 const resultado = await response.json();
 
                 if (resultado.success) {
-                    alert('Cadastro enviado com sucesso! Entraremos em contato em breve pelo Instagram.');
+                    alert('✅ Cadastro enviado com sucesso! Entraremos em contato pelo Instagram.');
                     form.reset();
                     window.location.href = 'inicio.html';
                 } else {
-                    alert('Erro ao enviar cadastro: ' + (resultado.error || 'Erro desconhecido retornado pela API.'));
+                    alert('❌ Erro: ' + (resultado.error || 'Erro desconhecido.'));
                 }
 
             } catch (error) {
-                console.error('Erro de rede ou na API:', error);
-                alert('Ocorreu um erro de comunicação. Verifique se o XAMPP está rodando e tente novamente.');
+                console.error('Erro:', error);
+                alert('Ocorreu um erro de comunicação. Tente novamente.');
             } finally {
                 button.disabled = false;
-                button.textContent = 'Enviar Cadastro';
+                button.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Cadastro';
             }
         }
 
-        // Adiciona os "escutadores" de eventos
         window.onload = preencherAnimal;
         document.getElementById('form-adocao').addEventListener('submit', enviarFormulario);
     </script>
 </body>
 </html>
-

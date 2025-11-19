@@ -330,7 +330,175 @@ a {
 .login-container input { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; }
 .login-container button { width: 100%; padding: 12px; background-color: rgb(4, 73, 172); color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
 
-/*---------------ADMINISTRATIVO (NOVO)---------------*/
+/*---------------ADMINISTRATIVO E CADASTROS (FORMULÁRIOS)---------------*/
+.container-admin, .main-cadastro-container {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+/* Usado tanto no admin quanto no cadastro de usuário */
+.form-container-admin, .form-card {
+    width: 100%;
+    max-width: 1000px;
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.form-container-admin h2, .form-header h1 {
+    color: rgb(4, 73, 172);
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 28px;
+}
+
+.subtitulo-admin, .form-header p {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Seções dentro do Formulário */
+.section-title {
+    color: #ffcc00;
+    background-color: rgb(4, 73, 172);
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin: 30px 0 20px 0;
+    font-size: 18px;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Campos do Formulário */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: rgb(4, 73, 172);
+    outline: none;
+    box-shadow: 0 0 5px rgba(4, 73, 172, 0.2);
+}
+
+.input-readonly {
+    background-color: #e9ecef;
+    color: #555;
+    cursor: not-allowed;
+}
+
+.form-text {
+    font-size: 12px;
+    color: #888;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Layout em Linha (Grid) */
+.form-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.form-row .form-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Botão de Enviar/Salvar */
+.btn-submit, .btn-enviar {
+    width: 100%;
+    padding: 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 20px;
+}
+
+.btn-submit:hover, .btn-enviar:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* Upload de Foto Admin */
+.upload-preview-container, .upload-area {
+    border: 2px dashed #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 10px;
+    transition: background 0.3s;
+}
+
+.custom-file-upload:hover {
+    background-color: #dbe2ef;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.image-preview-box img, #preview-img {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Checkbox com estilo de caixa */
+.checkbox-group {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.checkbox-group input {
+    width: auto;
+    margin-right: 10px;
+}
+
+/* Cabeçalho Admin */
 .cabecalho-admin {
     background-color: #333;
     color: white;
@@ -372,128 +540,13 @@ a {
     background-color: #b71c1c;
 }
 
-.container-admin {
-    width: 90%;
-    max-width: 1000px;
-    margin: 40px auto;
-    background-color: white;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-.form-container-admin h2 {
-    color: rgb(4, 73, 172);
-    border-bottom: 2px solid #f0f0f0;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-}
-
-.subtitulo-admin {
-    color: #666;
-    margin-bottom: 30px;
-    font-size: 14px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #333;
-    font-size: 14px;
-}
-
-.form-group input, .form-group select, .form-group textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 15px;
-    transition: border-color 0.3s;
-}
-
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-    border-color: rgb(4, 73, 172);
-    outline: none;
-}
-
-/* Layout em Linha (Grid) */
-.form-row {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.form-row .form-group {
-    flex: 1;
-    min-width: 150px;
-}
-
-/* Upload de Foto */
-.upload-preview-container {
-    border: 2px dashed #ddd;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    background-color: #f9f9f9;
-}
-
-.custom-file-upload {
-    display: inline-block;
-    padding: 10px 20px;
-    cursor: pointer;
-    background-color: #e9ecef;
-    border-radius: 5px;
-    font-weight: bold;
-    color: #555;
-    margin-bottom: 10px;
-    transition: background 0.3s;
-}
-
-.custom-file-upload:hover {
-    background-color: #dbe2ef;
-}
-
-input[type="file"] {
-    display: none;
-}
-
-.image-preview-box img {
-    max-width: 100%;
-    max-height: 200px;
-    border-radius: 8px;
-    margin-top: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.btn-submit {
-    width: 100%;
-    padding: 15px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 10px;
-}
-
-.btn-submit:hover {
-    background-color: #218838;
-}
-
 /* Mensagens de Alerta */
 .alert {
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 5px;
     font-weight: bold;
+    text-align: center;
 }
 
 .alert.success {
@@ -637,7 +690,7 @@ input[type="file"] {
     text-align: justify;
     margin-bottom: 60px;
     width: 100%;
-    max-width: 1000px; /* Limita largura para não ficar cansativo de ler */
+    max-width: 1000px;
 }
 
 .galeria-sobrenos {
@@ -663,7 +716,6 @@ input[type="file"] {
     transform: scale(1.05);
 }
 
-
 /* Responsividade Geral */
 @media (max-width: 768px) {
     .cabecalho { flex-direction: column; height: auto; padding: 20px; }
@@ -683,5 +735,7 @@ input[type="file"] {
     .rodape { flex-direction: column; gap: 30px; }
     .sobre-rodape, .contato-rodape { width: 100%; }
     
+    /* Correção para formulários em mobile */
     .form-row { flex-direction: column; gap: 0; }
+    .form-container-admin, .form-card { padding: 20px; }
 }
