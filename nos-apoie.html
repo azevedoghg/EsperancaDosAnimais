@@ -24,27 +24,40 @@
 
     <section id="section-doacao">
         <h1 id="titulo-doacao">DOAÇÃO</h1>
+        
+        <!-- Caixa de Texto (Esquerda) -->
         <div id="texto-doacao">
-            <h2>Nos ajude com qualquer valor</h3>
+            <h2>Nos ajude com qualquer valor</h2>
             <p>Pessoal, nossos resgates estão interrompidos sem previsão de voltar.</p>
             <p>Estamos com muitos cães grandes, idosos e que precisam de cuidados intensos.</p>
-            <p> Nossa ração acabou e não recebemos nenhuma ajuda este mês.</p>
-            <p> Estamos com dívidas de remédios que pegamos pois no frio os cães pegaram tossi canis e precisaram de medicações, os nove filhotes novos precisaram fazer exames completos para seguir para adoção.</p>
-            <p> Precisamos muito de ajuda financeira para pagar as dívidas e comprar ração. Nossas dívidas ultrapassam aos 10 mil reais.</p>
+            <p>Nossa ração acabou e não recebemos nenhuma ajuda este mês.</p>
+            <p>Estamos com dívidas de remédios que pegamos pois no frio os cães pegaram tosse canis e precisaram de medicações, os nove filhotes novos precisaram fazer exames completos para seguir para adoção.</p>
+            <p>Precisamos muito de ajuda financeira para pagar as dívidas e comprar ração. Nossas dívidas ultrapassam os 10 mil reais.</p>
         </div>
 
+        <!-- Área do PIX (Direita) -->
         <div id="area-pix">
             <img src="imagens/qrcode-pix.png" alt="qr code pix" id="qr-code">
             <p><span class="negrito">Chave PIX:</span> (11) 97766-5800</p>
             <p><span class="negrito">Nome:</span> Renato Del Nero</p>
             <p><span class="negrito">Tipo de Chave:</span> Telefone</p>
-            <p><span class="negrito">Código QrCode (Copia e Cola):</span></p>
-            <p>00020126360014BR.GOV.BCB.PIX0114+55119776658005204000053039865802BR5915Renato Del Nero6014Sao Paulo - SP62070503***6304D156</p>
+            
+            <p style="margin-top: 20px; margin-bottom: 5px;"><span class="negrito">Pix Copia e Cola:</span></p>
+            
+            <!-- Nova Área de Copiar -->
+            <div class="pix-copia-box">
+                <!-- O input readonly permite copiar mas o usuário não pode editar -->
+                <input type="text" id="pix-key" value="00020126360014BR.GOV.BCB.PIX0114+55119776658005204000053039865802BR5915Renato Del Nero6014Sao Paulo - SP62070503***6304D156" readonly>
+                <button onclick="copiarPix()" id="btn-copiar">Copiar</button>
+            </div>
+            <!-- Mensagem de sucesso escondida por padrão -->
+            <p id="msg-copiado" style="display:none; color: #76ff03; margin-top: 5px; font-weight: bold; text-shadow: 1px 1px 2px black;">Copiado com sucesso!</p>
         </div>
     </section>
 
     <section id="section-adocao">
         <h1 id="titulo-adocao">ADOÇÃO</h1>
+        
         <div id="texto-adocao">
             <h2>Você também pode nos ajudar adotando um animal</h2>
             <p>Temos muitos cachorrinhos carentes e brincalhões que precisam de uma família em nosso abrigo.</p>
@@ -55,21 +68,43 @@
 
         <div id="apresentacao-adocao">
             <img src="imagens/abrigo.jpg" alt="abrigo" id="abrigo-img">
-            <p>Veja os animais para adoção na página <a href="adote.html" class="negrito">ADOTE ou click aqui</a></p>
+            <p style="margin-top: 10px;">Veja os animais para adoção na página <a href="adote.html" class="negrito" style="text-decoration: underline;">ADOTE ou clique aqui</a></p>
         </div>
     </section>
 
     <footer class="rodape">
         <div class="sobre-rodape">
             <img src="imagens/logo-extensa.png" alt="logo extensa">
-            <p>Somos uma ONG que resgata animais em situação de rua e maus tratos, cuidados e direcionamos para adoções
-                responsáveis.</p>
+            <p>Somos uma ONG que resgata animais em situação de rua e maus tratos, cuidados e direcionamos para adoções responsáveis.</p>
         </div>
         <div class="contato-rodape">
             <a href="https://www.google.com/maps?q=Av.+Jos%C3%A9+Estima+Filho+-+Parque+Santa+Barbara,+S%C3%A3o+Paulo+-+SP,+Brasil"><img src="imagens/mapa.jpg" alt="mapa" class="mapa"></a>
             <p>Endereço: Av. José Estima Filho - Jardim Ângela</p>
         </div>
     </footer>
-</body>
 
+    <script>
+        function copiarPix() {
+            // Seleciona o campo de texto
+            var copyText = document.getElementById("pix-key");
+            
+            // Seleciona o texto no campo (essencial para mobile funcionar bem)
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // Para dispositivos móveis
+
+            // Executa o comando de cópia
+            document.execCommand("copy");
+
+            // Feedback visual (Mensagem de sucesso)
+            var msg = document.getElementById("msg-copiado");
+            msg.style.display = "block";
+            
+            // Esconde a mensagem após 3 segundos
+            setTimeout(function() {
+                msg.style.display = "none";
+            }, 3000);
+        }
+    </script>
+
+</body>
 </html>
