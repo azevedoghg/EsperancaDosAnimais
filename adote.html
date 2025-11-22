@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adote</title>
+    <title>Adote - AEA</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header class="cabecalho">
-        <a href="inicio.html" class="link-logo">
-            <img src="imagens/logo-extensa.png" alt="logo" class="logo-cabecalho">
-        </a>
-        <nav class="nav-cabecalho">
+        <a href="inicio.html"><img src="imagens/logo-extensa.png" alt="Logo" class="logo-cabecalho"></a>
+        <div class="mobile-menu-icon" id="menu-toggle">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+        <nav class="nav-cabecalho" id="nav-list">
             <a href="inicio.html">Início</a>
             <a href="Sobrenos.html">Sobre Nós</a>
             <a href="adote.html">Adote</a>
@@ -20,99 +22,151 @@
         </nav>
     </header>
 
-    <section id="section-animais">
-        <h1 id="titulo-adote">ADOTE UM ANIMAL</h1>
-
-        <!-- Este contêiner será preenchido pelo JavaScript -->
-        <div id="animais-container">
-            <!-- Os animais cadastrados aparecerão aqui -->
+    <section>
+        <h1 class="titulo-principal">Nossos Amigos</h1>
+        <div id="lista-animais" class="grid-animais">
+            <!-- Carregando via JS... -->
+            <p style="color:white; text-align:center; grid-column: 1/-1;">Carregando animais...</p>
         </div>
     </section>
 
+    <!-- MODAL DE FORMULÁRIO (POP-UP) -->
+    <div id="modal-adocao" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Adotar <span id="nome-animal-modal"></span></h3>
+                <span class="close-btn">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="form-adocao">
+                    <!-- Campo oculto para o nome do animal -->
+                    <input type="hidden" id="input-animal" name="animal_desejado">
+                    
+                    <div class="form-group">
+                        <label>Seu Nome Completo</label>
+                        <input type="text" name="nome" required placeholder="Ex: João Silva">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Telefone / WhatsApp</label>
+                        <input type="tel" name="telefone" required placeholder="(11) 99999-9999">
+                    </div>
+
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Instagram</label>
+                        <input type="text" name="instagram" placeholder="@seu.perfil">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tipo de Moradia</label>
+                        <select name="tipo_moradia" required>
+                            <option value="Casa">Casa</option>
+                            <option value="Apartamento">Apartamento</option>
+                            <option value="Sítio">Sítio</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Endereço (Bairro/Cidade)</label>
+                        <input type="text" name="endereco" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Por que deseja adotar?</label>
+                        <textarea name="motivo" rows="3" required></textarea>
+                    </div>
+
+                    <!-- Campos ocultos padrão para compatibilidade com o banco -->
+                    <input type="hidden" name="nascimento" value="2000-01-01">
+                    <input type="hidden" name="outros_animais" value="Não informado no popup">
+                    <input type="hidden" name="concorda_termos" value="1">
+
+                    <button type="submit" class="btn-adotar">ENVIAR PEDIDO</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <footer class="rodape">
-        <div class="sobre-rodape">
-            <img src="imagens/logo-extensa.png" alt="logo extensa">
-            <p>Somos uma ONG que resgata animais em situação de rua e maus tratos, cuidados e direcionamos para adoções responsáveis.</p>
-        </div>
-        <div class="contato-rodape">
-            <a href="https://www.google.com/maps?q=Av.+Jos%C3%A9+Estima+Filho+-+Parque+Santa+Barbara,+S%C3%A3o+Paulo+-+SP,+Brasil"><img src="imagens/mapa.jpg" alt="mapa" class="mapa"></a>
-            <p>Endereço: Av. José Estima Filho - Jardim Ângela</p>
-        </div>
+        <img src="imagens/logo-extensa.png" alt="Logo">
+        <p>Av. José Estima Filho - Jardim Ângela</p>
     </footer>
 
+    <script src="../main.js"></script>
     <script>
-        // URL da nossa API para listar os animais
-        const API_URL = 'http://localhost/EsperancaDosAnimais/api/animais/listar_animais.php';
+        // Script Inline para garantir carregamento se main.js falhar ou caminho estiver errado
+        const API_URL = 'api/animais/listar_animais.php';
 
-        // Função para criar o HTML de um cartão de animal
-        function criarCardAnimal(animal) {
-            const tagClasse = animal.sexo.toLowerCase() === 'fêmea' ? 'tag-femea' : 'tag-macho';
-
-            // Verifica se as flags 'castrado' e 'vacinado' são verdadeiras (valor 1)
-            const tagCastrado = animal.castrado == 1 ? `<li class="${tagClasse}">Castrado</li>` : '';
-            const tagVacinado = animal.vacinado == 1 ? `<li class="${tagClasse}">Vacinado</li>` : '';
-
-            // Usa template literals (crases) para construir o HTML facilmente
-            return `
-                <div class="card-animal">
-                    <img src="${animal.foto_url}" class="foto-animal" alt="Foto do animal ${animal.nome}">
-                    <h3>${animal.nome.toUpperCase()}</h3>
-                    <ul>
-                        <li class="${tagClasse}">${animal.sexo}</li>
-                        <li class="${tagClasse}">${animal.idade}</li>
-                        <li class="${tagClasse}">Porte ${animal.porte}</li>
-                        ${tagCastrado}
-                        ${tagVacinado}
-                    </ul>
-                    <p>${animal.descricao}</p>
-                    <button>
-                        <a href="cadastro.html?animal=${encodeURIComponent(animal.nome)}" target="_blank">
-                            ADOTAR
-                        </a>
-                    </button>
-                </div>
-            `;
-        }
-
-        // Função principal que busca os dados e exibe na tela
         async function carregarAnimais() {
-            const container = document.getElementById('animais-container');
-            container.innerHTML = '<p style="text-align: center;">Carregando animais...</p>';
-
+            const container = document.getElementById('lista-animais');
             try {
-                const response = await fetch(API_URL);
-                if (!response.ok) {
-                    throw new Error('Falha na rede ou API indisponível.');
-                }
-                const animais = await response.json();
-
-                // Limpa a mensagem de "carregando"
+                const res = await fetch(API_URL);
+                const animais = await res.json();
+                
                 container.innerHTML = '';
-
-                if (animais.length > 0) {
-                    // Para cada animal retornado pela API, cria e adiciona o cartão no container
-                    animais.forEach(animal => {
-                        const cardHtml = criarCardAnimal(animal);
-                        container.innerHTML += cardHtml;
-                    });
-                } else {
-                    container.innerHTML = '<p style="text-align: center;">Nenhum animal disponível para adoção no momento.</p>';
+                
+                if (animais.length === 0) {
+                    container.innerHTML = '<p style="color:white;">Nenhum animal disponível.</p>';
+                    return;
                 }
 
-            } catch (error) {
-                console.error('Erro ao buscar dados da API:', error);
-                container.innerHTML = `
-                    <p style="text-align: center; color: red;">
-                        <strong>Ocorreu um erro ao carregar os animais.</strong><br>
-                        Por favor, verifique se o XAMPP está rodando (Apache e MySQL) e tente recarregar a página.
-                    </p>
-                `;
+                animais.forEach(animal => {
+                    const tagClass = animal.sexo === 'Fêmea' ? 'tag-femea' : 'tag-macho';
+                    container.innerHTML += `
+                        <div class="card-animal">
+                            <img src="${animal.foto_url}" alt="${animal.nome}">
+                            <div class="card-info">
+                                <h3>${animal.nome}</h3>
+                                <div class="tags">
+                                    <span class="tag ${tagClass}">${animal.sexo}</span>
+                                    <span class="tag" style="background:#eee">${animal.idade}</span>
+                                    <span class="tag" style="background:#eee">${animal.porte}</span>
+                                </div>
+                                <button onclick="abrirAdocao('${animal.nome}')" class="btn-adotar">QUERO ADOTAR</button>
+                            </div>
+                        </div>
+                    `;
+                });
+            } catch (err) {
+                console.error(err);
+                container.innerHTML = '<p style="color:white;">Erro ao conectar com API.</p>';
             }
         }
+        
+        // Funções do Modal (Redundância ao main.js para garantir funcionamento)
+        const modal = document.getElementById('modal-adocao');
+        window.abrirAdocao = (nome) => {
+            document.getElementById('input-animal').value = nome;
+            document.getElementById('nome-animal-modal').innerText = nome;
+            modal.style.display = 'flex';
+        };
+        
+        document.querySelector('.close-btn').onclick = () => modal.style.display = 'none';
+        
+        // Form Submit
+        document.getElementById('form-adocao').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            btn.innerText = 'Enviando...';
+            
+            const formData = new FormData(e.target);
+            try {
+                const req = await fetch('api/cadastros/criar_cadastro.php', { method:'POST', body:formData });
+                const res = await req.json();
+                if(res.success) { alert('Pedido enviado!'); modal.style.display='none'; e.target.reset(); }
+                else { alert('Erro: ' + res.error); }
+            } catch(err) { alert('Erro de conexão'); }
+            btn.innerText = 'ENVIAR PEDIDO';
+        });
 
-        // Chama a função para carregar os animais assim que a página for aberta
-        window.onload = carregarAnimais;
+        document.addEventListener('DOMContentLoaded', carregarAnimais);
+        // Menu Toggle Inline
+        document.getElementById('menu-toggle').onclick = () => document.getElementById('nav-list').classList.toggle('active');
     </script>
 </body>
 </html>
-

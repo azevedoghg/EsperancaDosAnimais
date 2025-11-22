@@ -1,18 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fale Conosco</title>
+    <title>Fale Conosco - AEA</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="cabecalho">
-        <a href="#" class="link-logo">
-            <img src="imagens/logo-extensa.png" alt="logo" class="logo-cabecalho">
-        </a>
-        <nav class="nav-cabecalho">
+        <a href="inicio.html"><img src="imagens/logo-extensa.png" alt="Logo" class="logo-cabecalho"></a>
+        <div class="mobile-menu-icon" id="menu-toggle">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+        <nav class="nav-cabecalho" id="nav-list">
             <a href="inicio.html">Início</a>
             <a href="Sobrenos.html">Sobre Nós</a>
             <a href="adote.html">Adote</a>
@@ -21,54 +21,52 @@
         </nav>
     </header>
 
-    <section id="section-contato">
+    <section>
+        <h1 class="titulo-principal">Nossos Canais</h1>
         
-        <div class="contato-social">
-            <h1 class="titulo-contato">CONTATO</h1>
-            <ul>
-                <li>
-                    <a href="https://wa.me/5511977665800" class="link-social" target="_blank">
+        <div class="contato-container">
+            <a href="https://wa.me/5511977665800" target="_blank" class="card-contato">
+                <img src="imagens/whatsapp.png" alt="WhatsApp">
+                <div>
+                    <h3>WhatsApp</h3>
+                    <p>(11) 97766-5800</p>
+                </div>
+            </a>
 
-                        <img src="imagens/whatsapp.png" class="contato-logo" alt="logo whatsapp">
-                        <p>(11) 97766-5800 (Renato Del Nero)</p>
+            <a href="https://www.instagram.com/ong_aea" target="_blank" class="card-contato">
+                <img src="imagens/instagram.png" alt="Instagram">
+                <div>
+                    <h3>Instagram</h3>
+                    <p>@ong_aea</p>
+                </div>
+            </a>
+            
+            <a href="https://www.facebook.com/associacaoesperancadosanimais" target="_blank" class="card-contato">
+                <img src="imagens/facebook.png" alt="Facebook">
+                <div>
+                    <h3>Facebook</h3>
+                    <p>Assoc. Esperança dos Animais</p>
+                </div>
+            </a>
 
-                    </a>
-                </li>
-            </ul>
+            <a href="https://maps.google.com" target="_blank" class="card-contato">
+                <img src="imagens/mapa.jpg" alt="Mapa" style="border-radius:50%;">
+                <div>
+                    <h3>Visite-nos</h3>
+                    <p>Av. José Estima Filho</p>
+                </div>
+            </a>
         </div>
-
-        <div class="contato-social">
-            <h1 class="titulo-contato">Siga-nos</h1>
-            <ul>
-                <li>
-                    <a href="https://www.instagram.com/ong_aea" class="link-social" target="_blank">
-
-                        <img src="imagens/instagram.png" class="contato-logo" alt="logo instagram">
-                        <p>@ong_aea</p>
-
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.facebook.com/associacaoesperancadosanimais/?locale=pt_BR" class="link-social" target="_blank">
-                        
-                        <img src="imagens/facebook.png" class="contato-logo" alt="logo facebook">
-                        <p>Associação Esperança dos Animais</p>
-
-                    </a>
-                </li>
-            </ul>
-        </div>
-    
     </section>
+
     <footer class="rodape">
-        <div class="sobre-rodape">
-            <img src="imagens/logo-extensa.png" alt="logo extensa">
-            <p>Somos uma ONG que resgata animais em situação de rua e maus tratos, cuidados e direcionamos para adoções responsáveis.</p>
-        </div>
-        <div class="contato-rodape">
-            <a href="https://www.google.com/maps?q=Av.+Jos%C3%A9+Estima+Filho+-+Parque+Santa+Barbara,+S%C3%A3o+Paulo+-+SP,+Brasil"><img src="imagens/mapa.jpg" alt="mapa" class="mapa"></a>
-            <p>Endereço: Av. José Estima Filho - Jardim Ângela</p>
-        </div>
+        <img src="imagens/logo-extensa.png" alt="Logo">
+        <p>Av. José Estima Filho - Jardim Ângela</p>
     </footer>
+
+    <script src="../main.js"></script>
+    <script>
+        document.getElementById('menu-toggle').onclick = () => document.getElementById('nav-list').classList.toggle('active');
+    </script>
 </body>
 </html>

@@ -1,176 +1,76 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Início</title>
+    <title>Início - Associação Esperança dos Animais</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-
 <body>
     <header class="cabecalho">
-        <a href="inicio.html" class="link-logo">
-            <img src="imagens/logo-extensa.png" alt="logo" class="logo-cabecalho">
-        </a>
-        <nav class="nav-cabecalho">
+        <a href="inicio.html"><img src="imagens/logo-extensa.png" alt="Logo" class="logo-cabecalho"></a>
+        
+        <div class="mobile-menu-icon" id="menu-toggle">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <nav class="nav-cabecalho" id="nav-list">
             <a href="inicio.html">Início</a>
             <a href="Sobrenos.html">Sobre Nós</a>
             <a href="adote.html">Adote</a>
             <a href="nos-apoie.html">Nos Apoie</a>
             <a href="faleconosco.html">Fale Conosco</a>
-            <!-- Botão de Login Adicionado -->
-            <a href="login.html" style="background-color: white; color: rgb(4, 73, 172);">Login</a>
+            <a href="login.html" style="color: var(--primary-blue); background: white; border-radius: 20px;">Login</a>
         </nav>
     </header>
 
     <main>
-        <section class="section-inicio">
-            <h1 class="titulo-inicio">COMO AJUDAR?</h1>
-            <div class="conteudo-lado-a-lado">
-
-                <div class="texto-inicio">
-                    <p>
-                        Nós da Assoc. Esperança dos Animais, temos a missão de
-                        resgatar animais em situação de vulnerabilidade e
-                        proporcionar a eles a reabilitação necessária para encontrar
-                        um lar permanente. Com o apoio da
-                        comunidade,
-                        trabalhamos incansavelmente para garantir que cada animal
-                        tenha uma segunda chance e uma vida digna. Sua
-                        contribuição pode salvar vidas!
-                    </p>
-                    <p>
-                        Pressione o botão abaixo para acessar o formulário de
-                        candidatura a adoção, caso tenha interesse!
-                    </p>
+        <section>
+            <h1 class="titulo-principal">Como Ajudar?</h1>
+            <div class="container-flex">
+                <div class="card-texto">
+                    <p>Nossa missão é resgatar animais em situação de vulnerabilidade, cuidar e encontrar lares amorosos. Com o apoio da comunidade, trabalhamos incansavelmente para garantir uma segunda chance a cada vida resgatada.</p>
+                    <br>
+                    <p>Você pode fazer a diferença adotando ou doando!</p>
+                    
+                    <a href="adote.html" style="display:inline-block; margin-top:20px; padding:10px 20px; background:white; color:var(--primary-blue); border-radius:20px; font-weight:bold;">QUERO ADOTAR</a>
                 </div>
-                
-                <img src="imagens/comoajudar.png" id="img-comoajudar" alt="Ilustração de como ajudar">
+                <img src="imagens/comoajudar.png" alt="Mãos unidas" class="img-destaque">
             </div>
-
-            <button>
-                <a href="adote.html">
-                    ADOTAR
-                </a>
-            </button>
-
-            <hr class="linha-inicio">
         </section>
 
-        <section class="section-inicio">
-            <h1 class="titulo-inicio">EVENTOS DE ADOÇÃO</h1>
-            <div class="conteudo-lado-a-lado">
-                <img src="imagens/chico.jpg" alt="cachorro chico" id="img-chico">
-                <div class="texto-inicio">
-                    <p>
-                        #tbt Que fala né ?
-                        Eita Chico quando recebo fotos suas kk ainda não acredito que foi possível, sendo sincera ? Qual a chance ?
-                        Um senhor ? SRD ? Três pernas ? Macho ? Preto ? Porte Médio.
-                        Realmente, características suficiente para que você viesse anos negligênciado nas ruas e após o resgate ser
-                        condenado a um abrigo.
-                        Mas você é perfeito demais e encantador.
-                    </p>
-                    <p>
-                        A Dani do lt que cuidou de todo seu pós operatório @acao_chego eram só elogios, paixão a primeira vista.
-                        Foi a um evento do @ocaodeirante e arrancou suspiros de amor.
-                    </p>
-                    <p>
-                        Até que depois da divulgação do @hyppet, tivemos filas de formulários.
-                    </p>
-                    <p>
-                        Mas destino è destino e o primeiro já era sua super família especial,
-                        lembro de uma pergunta mt importante que fizemos:
-                        Porque adotar o Chico ?
-                        Resposta da adotante:
-                        Porque ele precisa de nós, e nos dele.
-                    </p>
-                    <p>
-                        E pasmem ela é fisio kk o que ajuda mt, pois ele já tem mais de 6 anos e precisa de acompanhamento.
-                        Realmente, tempo ao tempo e eles se encontram.
-                    </p>
-                    <p>
-                        Obrigada a todos envolvidos, o sorrisão do Chico diz tudo.
-                    </p>
+        <section>
+            <h1 class="titulo-principal">Histórias de Sucesso</h1>
+            <div class="container-flex">
+                <img src="imagens/chico.jpg" alt="Cachorro Chico" class="img-destaque">
+                <div class="card-texto">
+                    <h3>O Final Feliz do Chico</h3>
+                    <p>Chico, nosso guerreiro de três patas, encontrou uma família incrível. Depois de ser resgatado negligenciado, hoje ele recebe todo o amor e cuidados fisioterapêuticos que precisa. Adotar é um ato de amor!</p>
                 </div>
-                
             </div>
-
-            <hr class="linha-inicio">
-            
-            <div class="conteudo-lado-a-lado">
-                <div class="texto-inicio">
-                    <p>Galera essas três pequenas estão disponíveis para adoção responsável.</p>
-                    <p>Estão na petz Congonhas na vitrine, para conhecê-las precisar ir até lá.
-                        Três meses, Castradas, Vacinadas, Porte M, Microchipadas</p>
-                    <p>Ajudem nossos filhotes ganharem uma família.
-                        Divulguem, compartilhem ! </p>
-                </div>
-                
-                <img src="imagens/dog.jpg" id="img-dog" alt="Três cachorrinhas para adoção">
-            </div>
-
-            <hr class="linha-inicio">
-
-            <div class="conteudo-lado-a-lado">
-                <img src="imagens/banco.jpg" alt="conta bancaria negativa" id="img-conta">
-
-                <div class="texto-inicio">
-                    <p> Galera viemos mais uma vez pedir a ajuda de todos.</p>
-                    <p> A nossa conta está super negativa, a ração está acabando e temos contas em aberta.
-                        Esse mês pagamos a dívida da clínica mais de $4.000,00.</p>
-                    <p> São consultas e exames dos cães, mês de frio, enfrentamos a tossi canis no abrigo, todos precisaram de
-                        antibiótico e vitaminas.
-                        Quando um pega é inevitável que outros também pegam.</p>
-                    <p> Precisamos mt de ração, mt mesmo.</p>
-                    <p> Quem puder doar qualquer ajuda ou um saco.</p>
-                    <p> utilizamos da pet gold. Custa 59$ saco de 10 kg.</p>
-                    <p> Você pode doar um?</p>
-                    <p> Pix 11 97766-5800 - Renato del Nero ou</p>
-                    <p> adoteamee@gmail.com</p>
-                </div>
-
-            </div>
-
-            <hr class="linha-inicio">
-
-            <div class="conteudo-lado-a-lado">
-                
-                <div class="texto-inicio">
-                    <p> Galera estamos fazendo essa rifa de emergência para pagar os gastos com a gatinha com tumores de mama devido
-                        a injeção anti cio.</p>
-                    <p> Ela precisou de cirurgia e internação, estado dela é muito grave e não conseguimos nenhuma ajuda.
-                        Compartilhem nossa rifa. </p>
-                    <p> Cada nome 15$</p>
-                    <p> Pix - 11 97766-5800 - Renato Del Nero</p>
-                </div>
-
-                <img src="imagens/rifa.jpg" alt="rifa"  id="img-rifa">
-
-            </div>
-
         </section>
-        
-        <div style="text-align: center;">
-            <br><br><br><br><br><br><br><br>
-        </div>
     </main>
 
     <footer class="rodape">
-        <div class="sobre-rodape">
-            <img src="imagens/logo-extensa.png" alt="logo extensa">
-            <p>Somos uma ONG que resgata animais em situação de rua e maus tratos, cuidados e direcionamos para adoções
-                responsáveis.</p>
-            <!-- Link para o painel de administração já removido do rodapé para ficar só no topo -->
-        </div>
-        <div class="contato-rodape">
-            <a
-                href="https://www.google.com/maps?q=Av.+Jos%C3%A9+Estima+Filho+-+Parque+Santa+Barbara,+S%C3%A3o+Paulo+-+SP,+Brasil"><img
-                    src="imagens/mapa.jpg" alt="mapa" class="mapa"></a>
-            <p>Endereço: Av. José Estima Filho - Jardim Ângela</p>
-        </div>
+        <img src="imagens/logo-extensa.png" alt="Logo">
+        <p>Av. José Estima Filho - Jardim Ângela, SP</p>
+        <p>&copy; 2024 Associação Esperança dos Animais</p>
     </footer>
 
+    <script src="../main.js"></script> <!-- Ajuste o caminho se necessário, ou coloque na mesma pasta -->
+    <!-- Se main.js estiver na mesma pasta use src="main.js" -->
+    <script>
+        // Inclusão direta do JS caso não queira criar arquivo separado
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('menu-toggle');
+            const navList = document.getElementById('nav-list');
+            if (menuBtn) {
+                menuBtn.addEventListener('click', () => navList.classList.toggle('active'));
+            }
+        });
+    </script>
 </body>
-
 </html>

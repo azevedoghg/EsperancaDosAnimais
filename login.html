@@ -6,61 +6,86 @@
     <title>Login - Painel Administrativo</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* ESTILOS ORIGINAIS MANTIDOS */
         .login-container {
-            width: 100%;
+            width: 90%;
             max-width: 400px;
-            margin: 50px auto;
-            padding: 20px;
+            margin: 80px auto;
+            padding: 30px;
             background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         .login-container h2 {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            color: rgb(4, 73, 172);
+            font-family: "Poppins", sans-serif;
         }
         .login-container input {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            border-radius: 5px;
+            box-sizing: border-box;
         }
         .login-container button {
             width: 100%;
-            padding: 10px;
-            border: none;
+            padding: 12px;
             background-color: rgb(4, 73, 172);
             color: white;
-            border-radius: 4px;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .login-container button:hover {
+            background-color: #003366;
         }
     </style>
 </head>
 <body>
+    <!-- CABEÇALHO ATUALIZADO PARA FUNCIONAR NO MOBILE -->
     <header class="cabecalho">
-        <a href="inicio.html" class="link-logo">
-            <img src="imagens/logo-extensa.png" alt="logo" class="logo-cabecalho">
-        </a>
-        <h1 id="cabecalho-h1">Acesso Restrito</h1>
+        <a href="inicio.html"><img src="imagens/logo-extensa.png" alt="logo" class="logo-cabecalho"></a>
+        
+        <!-- Botão do Menu Celular -->
+        <div class="mobile-menu-icon" id="menu-toggle">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+
+        <nav class="nav-cabecalho" id="nav-list">
+            <a href="inicio.html">Voltar ao Site</a>
+        </nav>
     </header>
 
+    <!-- FORMULÁRIO ORIGINAL -->
     <div class="login-container">
-        <h2>Login Administrativo</h2>
+        <h2>Acesso Restrito</h2>
         <form id="login-form">
             <input type="text" id="username" name="username" placeholder="Utilizador" required>
             <input type="password" id="password" name="password" placeholder="Senha" required>
-            <div id="error-message" style="color:red; margin-bottom: 15px;"></div>
+            <div id="error-message" style="color:red; margin-bottom: 15px; text-align: center; font-size: 14px;"></div>
             <button type="submit">Entrar</button>
         </form>
     </div>
 
+    <footer class="rodape">
+        <p>Área exclusiva para administradores da ONG.</p>
+    </footer>
+
+    <!-- Ligação com o Script Lógico -->
+    <script src="../main.js"></script>
+
     <script>
+        // Script original de login
         document.getElementById('login-form').addEventListener('submit', async function(event) {
             event.preventDefault();
             const formData = new FormData(this);
             const errorMessage = document.getElementById('error-message');
-            errorMessage.textContent = '';
+            errorMessage.textContent = 'Verificando...';
 
             try {
                 const response = await fetch('api/login.php', {
@@ -70,7 +95,6 @@
                 const result = await response.json();
 
                 if (result.success) {
-                    // Redireciona para o painel de cadastros após o login
                     window.location.href = 'admin_cadastros.php';
                 } else {
                     errorMessage.textContent = result.error || 'Utilizador ou senha inválidos.';
@@ -79,6 +103,14 @@
                 errorMessage.textContent = 'Erro de comunicação com o servidor.';
             }
         });
+        
+        // Garante que o menu mobile funcione nesta página também
+        const menuBtn = document.getElementById('menu-toggle');
+        if(menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                document.getElementById('nav-list').classList.toggle('active');
+            });
+        }
     </script>
 </body>
 </html>
