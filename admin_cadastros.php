@@ -4,52 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel de Gestão de Adoções</title>
+    <title>Gestão de Adoções - AEA</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .admin-nav { padding: 10px; background-color: #333; text-align: right; }
-        .admin-nav a { color: white; text-decoration: none; padding: 5px 10px; margin-left: 10px;}
-        #admin-container {
-            width: 95%; margin: 20px auto; padding: 20px;
-            background-color: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-radius: 8px;
-        }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; vertical-align: middle; }
-        th { background-color: #f2f2f2; }
-        .status-Pendente { background-color: #fffacd; }
-        .status-Aprovado { background-color: #d4edda; }
-        .status-Reprovado { background-color: #f8d7da; }
-        .actions button {
-            padding: 5px 10px; margin-right: 5px; border: none;
-            border-radius: 4px; cursor: pointer; color: white;
-        }
-        .btn-approve { background-color: #28a745; }
-        .btn-reject { background-color: #dc3545; }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header class="cabecalho">
-        <a href="inicio.html" class="link-logo">
-            <img src="imagens/logo-extensa.png" alt="logo" class="logo-cabecalho">
-        </a>
-        <h1 id="cabecalho-hl">Painel de Adoções</h1>
+        <a href="inicio.html"><img src="imagens/logo-extensa.png" alt="logo" class="logo-cabecalho"></a>
+        
+        <!-- Menu Simples para Admin -->
+        <nav class="nav-cabecalho" style="position:static; width:auto; background:transparent; box-shadow:none; flex-direction:row;">
+            <a href="admin_animais.php">Novo Animal</a>
+            <a href="api/logout.php" style="color:red;">Sair</a>
+        </nav>
     </header>
 
-    <nav class="admin-nav">
-        <a href="admin_animais.php">Cadastrar Novo Animal</a>
-        <a href="api/logout.php">Sair (Logout)</a>
-    </nav>
-
     <main id="admin-container">
-        <h2>Candidaturas Recebidas</h2>
-        <div id="loading">Carregando candidaturas...</div>
+        <h2 style="color:var(--primary-blue); text-align:center; margin-bottom:20px;">Candidaturas Recebidas</h2>
+        
+        <div id="loading" style="text-align:center;">Carregando...</div>
         
         <table>
             <thead>
                 <tr>
                     <th>Animal</th>
-                    <th>Candidato(a)</th>
+                    <th>Candidato</th>
                     <th>Contato</th>
                     <th>Detalhes</th>
                     <th>Status</th>
@@ -57,89 +36,98 @@
                 </tr>
             </thead>
             <tbody id="applications-table-body">
-                <!-- JS vai preencher aqui -->
+                <!-- JS Preenche aqui -->
             </tbody>
         </table>
     </main>
 
+    <footer class="rodape">
+        <p>Painel Administrativo - AEA</p>
+    </footer>
+
     <script>
-        // CAMINHOS CORRIGIDOS AQUI
-        // Agora apontam para os arquivos que vamos criar/corrigir na pasta api/cadastros/
-        const API_LISTAR_URL = 'api/cadastros/listar_cadastros.php';
-        const API_ATUALIZAR_URL = 'api/cadastros/atualizar_status_cadastro.php';
+        const API_LISTAR = 'api/cadastros/listar_cadastros.php';
+        const API_ATUALIZAR = 'api/cadastros/atualizar_status_cadastro.php';
 
         async function carregarCandidaturas() {
-            const tableBody = document.getElementById('applications-table-body');
-            const loadingDiv = document.getElementById('loading');
-            
-            tableBody.innerHTML = '';
-            loadingDiv.style.display = 'block';
+            const tbody = document.getElementById('applications-table-body');
+            const loading = document.getElementById('loading');
 
             try {
-                const response = await fetch(API_LISTAR_URL);
-                const candidaturas = await response.json();
+                // Tenta buscar da API
+                const res = await fetch(API_LISTAR);
+                const data = await res.json();
                 
-                loadingDiv.style.display = 'none';
+                loading.style.display = 'none';
 
-                if (candidaturas.error) throw new Error(candidaturas.error);
-
-                if (!Array.isArray(candidaturas) || candidaturas.length === 0) {
-                    tableBody.innerHTML = '<tr><td colspan="6" style="text-align:center;">Nenhuma candidatura encontrada.</td></tr>';
+                if(!Array.isArray(data) || data.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center">Nenhuma candidatura.</td></tr>';
                     return;
                 }
 
-                candidaturas.forEach(app => {
+                tbody.innerHTML = '';
+                data.forEach(app => {
                     const tr = document.createElement('tr');
                     tr.className = `status-${app.status}`;
                     
+                    // IMPORTANTE: data-label é usado pelo CSS para o modo Mobile
                     tr.innerHTML = `
-                        <td>${app.animal_nome || 'Animal Desconhecido'}</td>
-                        <td>${app.nome_completo}</td>
-                        <td>
-                            Email: ${app.email}<br>
-                            Tel: ${app.telefone}<br>
-                            Insta: ${app.instagram}
+                        <td data-label="Animal">${app.animal_nome || 'Indefinido'}</td>
+                        <td data-label="Candidato">${app.nome_completo}</td>
+                        <td data-label="Contato">
+                            ${app.telefone}<br>
+                            <small>${app.email}</small>
                         </td>
-                        <td>
+                        <td data-label="Detalhes">
                             <small>Moradia: ${app.tipo_moradia}</small><br>
-                            <small>Motivo: ${app.motivo.substring(0, 50)}...</small>
+                            <small>Motivo: ${app.motivo.substring(0,20)}...</small>
                         </td>
-                        <td><strong>${app.status}</strong></td>
-                        <td class="actions">
-                            <button class="btn-approve" onclick="atualizarStatus(${app.id}, 'Aprovado')">Aprovar</button>
-                            <button class="btn-reject" onclick="atualizarStatus(${app.id}, 'Reprovado')">Reprovar</button>
+                        <td data-label="Status">${app.status}</td>
+                        <td data-label="Ações" class="actions">
+                            <button class="btn-approve" onclick="alterarStatus(${app.id}, 'Aprovado')"><i class="fas fa-check"></i></button>
+                            <button class="btn-reject" onclick="alterarStatus(${app.id}, 'Reprovado')"><i class="fas fa-times"></i></button>
                         </td>
                     `;
-                    tableBody.appendChild(tr);
+                    tbody.appendChild(tr);
                 });
 
-            } catch (error) {
-                loadingDiv.innerHTML = `<p style="color: red;">Erro ao carregar: ${error.message}</p>`;
-                console.error(error);
+            } catch (err) {
+                console.error(err);
+                loading.innerHTML = '<p style="color:red">Erro ao carregar (Backend Offline?)</p>';
+                
+                // MOCK DE TESTE SE API FALHAR
+                tbody.innerHTML = `
+                    <tr class="status-Pendente">
+                        <td data-label="Animal">Rex (Teste)</td>
+                        <td data-label="Candidato">João Silva</td>
+                        <td data-label="Contato">11 9999-9999</td>
+                        <td data-label="Detalhes">Casa, quintal grande</td>
+                        <td data-label="Status">Pendente</td>
+                        <td data-label="Ações" class="actions">
+                            <button class="btn-approve">V</button>
+                            <button class="btn-reject">X</button>
+                        </td>
+                    </tr>
+                `;
             }
         }
 
-        async function atualizarStatus(id, novoStatus) {
-            if (!confirm(`Deseja marcar como "${novoStatus}"?`)) return;
-
+        async function alterarStatus(id, status) {
+            if(!confirm(`Mudar para ${status}?`)) return;
+            
             try {
-                const response = await fetch(API_ATUALIZAR_URL, {
+                const res = await fetch(API_ATUALIZAR, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ id: id, status: novoStatus })
+                    body: JSON.stringify({ id, status })
                 });
-
-                const resultado = await response.json();
-
-                if (resultado.success) {
-                    alert('Status atualizado!');
+                const json = await res.json();
+                if(json.success) {
+                    alert('Atualizado!');
                     carregarCandidaturas();
                 } else {
-                    throw new Error(resultado.error || 'Erro ao atualizar');
+                    alert('Erro: ' + json.error);
                 }
-            } catch (error) {
-                alert(`Erro: ${error.message}`);
-            }
+            } catch(e) { alert('Erro de conexão'); }
         }
 
         window.onload = carregarCandidaturas;

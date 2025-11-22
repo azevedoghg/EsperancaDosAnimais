@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nos Apoie</title>
+    <title>Nos Apoie - AEA</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <header class="cabecalho">
-        <a href="inicio.html" class="link-logo">
-            <img src="imagens/logo-extensa.png" alt="logo" class="logo-cabecalho">
-        </a>
-        <nav class="nav-cabecalho">
+        <a href="inicio.html"><img src="imagens/logo-extensa.png" alt="Logo" class="logo-cabecalho"></a>
+        <div class="mobile-menu-icon" id="menu-toggle">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+        <nav class="nav-cabecalho" id="nav-list">
             <a href="inicio.html">Início</a>
             <a href="Sobrenos.html">Sobre Nós</a>
             <a href="adote.html">Adote</a>
@@ -22,89 +21,45 @@
         </nav>
     </header>
 
-    <section id="section-doacao">
-        <h1 id="titulo-doacao">DOAÇÃO</h1>
+    <section>
+        <h1 class="titulo-principal">Faça uma Doação</h1>
         
-        <!-- Caixa de Texto (Esquerda) -->
-        <div id="texto-doacao">
-            <h2>Nos ajude com qualquer valor</h2>
-            <p>Pessoal, nossos resgates estão interrompidos sem previsão de voltar.</p>
-            <p>Estamos com muitos cães grandes, idosos e que precisam de cuidados intensos.</p>
-            <p>Nossa ração acabou e não recebemos nenhuma ajuda este mês.</p>
-            <p>Estamos com dívidas de remédios que pegamos pois no frio os cães pegaram tosse canis e precisaram de medicações, os nove filhotes novos precisaram fazer exames completos para seguir para adoção.</p>
-            <p>Precisamos muito de ajuda financeira para pagar as dívidas e comprar ração. Nossas dívidas ultrapassam os 10 mil reais.</p>
-        </div>
-
-        <!-- Área do PIX (Direita) -->
-        <div id="area-pix">
-            <img src="imagens/qrcode-pix.png" alt="qr code pix" id="qr-code">
-            <p><span class="negrito">Chave PIX:</span> (11) 97766-5800</p>
-            <p><span class="negrito">Nome:</span> Renato Del Nero</p>
-            <p><span class="negrito">Tipo de Chave:</span> Telefone</p>
-            
-            <p style="margin-top: 20px; margin-bottom: 5px;"><span class="negrito">Pix Copia e Cola:</span></p>
-            
-            <!-- Nova Área de Copiar -->
-            <div class="pix-copia-box">
-                <!-- O input readonly permite copiar mas o usuário não pode editar -->
-                <input type="text" id="pix-key" value="00020126360014BR.GOV.BCB.PIX0114+55119776658005204000053039865802BR5915Renato Del Nero6014Sao Paulo - SP62070503***6304D156" readonly>
-                <button onclick="copiarPix()" id="btn-copiar">Copiar</button>
+        <div class="container-flex">
+            <div class="card-texto">
+                <h2>Sua ajuda salva vidas!</h2>
+                <br>
+                <p>Atualmente estamos com o estoque de ração crítico e dívidas veterinárias. Qualquer valor ajuda a manter nossos 50 animais abrigados, alimentados e medicados.</p>
             </div>
-            <!-- Mensagem de sucesso escondida por padrão -->
-            <p id="msg-copiado" style="display:none; color: #76ff03; margin-top: 5px; font-weight: bold; text-shadow: 1px 1px 2px black;">Copiado com sucesso!</p>
-        </div>
-    </section>
 
-    <section id="section-adocao">
-        <h1 id="titulo-adocao">ADOÇÃO</h1>
-        
-        <div id="texto-adocao">
-            <h2>Você também pode nos ajudar adotando um animal</h2>
-            <p>Temos muitos cachorrinhos carentes e brincalhões que precisam de uma família em nosso abrigo.</p>
-            <p>Cada um deles tem histórias de maus tratos, abandonos, negligências, muitos foram invisíveis aos olhos por muito tempo até chegarem em nós.</p>
-            <p>Dói muito no peito só de imaginar.</p>
-            <p>Ainda sonhamos com a família especial de cada um, espero mesmo que todos tenham a chance de ouro.</p>
-        </div>
+            <div class="pix-box">
+                <h2 style="color:var(--primary-blue); margin-bottom:15px;">PIX Solidário</h2>
+                <img src="imagens/qrcode-pix.png" alt="QR Code Pix" style="margin:0 auto; width:200px;">
+                <p style="margin-top:10px; color:#555;">Chave Celular: <strong>(11) 97766-5800</strong></p>
+                <p style="font-size:0.9rem; color:#777;">Renato Del Nero</p>
 
-        <div id="apresentacao-adocao">
-            <img src="imagens/abrigo.jpg" alt="abrigo" id="abrigo-img">
-            <p style="margin-top: 10px;">Veja os animais para adoção na página <a href="adote.html" class="negrito" style="text-decoration: underline;">ADOTE ou clique aqui</a></p>
+                <div class="pix-code-container">
+                    <input type="text" id="pix-key" class="pix-input" value="00020126360014BR.GOV.BCB.PIX0114+55119776658005204000053039865802BR5915Renato Del Nero6014Sao Paulo" readonly>
+                    <button onclick="copiarPix()" class="btn-copy">COPIAR</button>
+                </div>
+            </div>
         </div>
     </section>
 
     <footer class="rodape">
-        <div class="sobre-rodape">
-            <img src="imagens/logo-extensa.png" alt="logo extensa">
-            <p>Somos uma ONG que resgata animais em situação de rua e maus tratos, cuidados e direcionamos para adoções responsáveis.</p>
-        </div>
-        <div class="contato-rodape">
-            <a href="https://www.google.com/maps?q=Av.+Jos%C3%A9+Estima+Filho+-+Parque+Santa+Barbara,+S%C3%A3o+Paulo+-+SP,+Brasil"><img src="imagens/mapa.jpg" alt="mapa" class="mapa"></a>
-            <p>Endereço: Av. José Estima Filho - Jardim Ângela</p>
-        </div>
+        <img src="imagens/logo-extensa.png" alt="Logo">
+        <p>Av. José Estima Filho - Jardim Ângela</p>
     </footer>
 
+    <script src="../main.js"></script>
     <script>
+        document.getElementById('menu-toggle').onclick = () => document.getElementById('nav-list').classList.toggle('active');
         function copiarPix() {
-            // Seleciona o campo de texto
-            var copyText = document.getElementById("pix-key");
-            
-            // Seleciona o texto no campo (essencial para mobile funcionar bem)
-            copyText.select();
-            copyText.setSelectionRange(0, 99999); // Para dispositivos móveis
-
-            // Executa o comando de cópia
-            document.execCommand("copy");
-
-            // Feedback visual (Mensagem de sucesso)
-            var msg = document.getElementById("msg-copiado");
-            msg.style.display = "block";
-            
-            // Esconde a mensagem após 3 segundos
-            setTimeout(function() {
-                msg.style.display = "none";
-            }, 3000);
+            const el = document.getElementById('pix-key');
+            el.select();
+            el.setSelectionRange(0, 99999); 
+            document.execCommand('copy');
+            alert('Chave PIX copiada com sucesso!');
         }
     </script>
-
 </body>
 </html>

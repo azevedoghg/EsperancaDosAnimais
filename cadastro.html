@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro para Adoção</title>
+    <title>Cadastro para Adoção - AEA</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Ícones para melhorar a usabilidade -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-
-<body id="pag-cadastro">
-
+<body>
     <header class="cabecalho">
-        <a href="inicio.html" class="link-logo">
-            <img src="imagens/logo-extensa.png" alt="Logo ONG" class="logo-cabecalho" />
-        </a>
-        <nav class="nav-cabecalho">
+        <a href="inicio.html"><img src="imagens/logo-extensa.png" alt="Logo" class="logo-cabecalho"></a>
+        <div class="mobile-menu-icon" id="menu-toggle">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+        <nav class="nav-cabecalho" id="nav-list">
             <a href="inicio.html">Início</a>
             <a href="Sobrenos.html">Sobre Nós</a>
             <a href="adote.html">Adote</a>
@@ -29,169 +26,143 @@
         <div class="form-card">
             <div class="form-header">
                 <h1><i class="fas fa-heart"></i> Formulário de Adoção</h1>
-                <p>Ficamos felizes com seu interesse! Preencha os dados abaixo para conhecermos melhor você.</p>
+                <p>Preencha os dados com carinho para conhecermos você.</p>
             </div>
 
             <form id="form-adocao">
-                
-                <!-- Seção 1: Sobre o Animal -->
-                <h3 class="section-title"><i class="fas fa-paw"></i> Qual animal você deseja adotar?</h3>
+                <!-- Seção 1 -->
+                <h3 class="section-title"><i class="fas fa-paw"></i> Interesse</h3>
                 <div class="form-group">
-                    <label for="animal_desejado">Nome do Animal</label>
-                    <input type="text" id="animal_desejado" name="animal_desejado" required readonly class="input-readonly">
-                    <small class="form-text text-muted">Este campo é preenchido automaticamente ao clicar em "Adotar" na página anterior.</small>
+                    <label>Animal Desejado</label>
+                    <!-- Readonly para o usuário não editar manualmente -->
+                    <input type="text" id="animal_desejado" name="animal_desejado" readonly class="input-readonly" placeholder="Selecione na página 'Adote'">
                 </div>
 
-                <!-- Seção 2: Dados Pessoais -->
+                <!-- Seção 2: Grid de 2 colunas no Desktop -->
                 <h3 class="section-title"><i class="fas fa-user"></i> Seus Dados</h3>
-                
-                <div class="form-group">
-                    <label for="nome">Nome Completo</label>
-                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="nascimento">Data de Nascimento</label>
-                        <input type="date" id="nascimento" name="nascimento" required>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label>Nome Completo</label>
+                        <input type="text" name="nome" required placeholder="Digite seu nome completo">
                     </div>
+
                     <div class="form-group">
-                        <label for="instagram">Instagram</label>
-                        <input type="text" id="instagram" name="instagram" placeholder="@seu.perfil" required>
+                        <label>Data de Nascimento</label>
+                        <input type="date" name="nascimento" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Instagram</label>
+                        <input type="text" name="instagram" required placeholder="@seu.perfil">
+                    </div>
+
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="email" name="email" required placeholder="exemplo@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Telefone / WhatsApp</label>
+                        <input type="tel" name="telefone" required placeholder="(XX) 9XXXX-XXXX">
                     </div>
                 </div>
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="email">E-mail</label>
-                        <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                <!-- Seção 3 -->
+                <h3 class="section-title"><i class="fas fa-home"></i> Moradia</h3>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label>Endereço Completo</label>
+                        <input type="text" name="endereco" required placeholder="Rua, Número, Bairro, Cidade">
                     </div>
+
                     <div class="form-group">
-                        <label for="telefone">Telefone / WhatsApp</label>
-                        <input type="tel" id="telefone" name="telefone" placeholder="(XX) 9XXXX-XXXX" required>
+                        <label>Tipo de Residência</label>
+                        <select name="tipo_moradia" required>
+                            <option value="" disabled selected>Selecione...</option>
+                            <option value="Casa">Casa com quintal</option>
+                            <option value="Casa sem quintal">Casa sem quintal</option>
+                            <option value="Apartamento">Apartamento</option>
+                            <option value="Sítio">Sítio / Chácara</option>
+                        </select>
                     </div>
                 </div>
 
-                <!-- Seção 3: Endereço e Moradia -->
-                <h3 class="section-title"><i class="fas fa-home"></i> Onde você mora?</h3>
-                
+                <!-- Seção 4 -->
+                <h3 class="section-title"><i class="fas fa-comment-dots"></i> Perguntas</h3>
                 <div class="form-group">
-                    <label for="endereco">Endereço Completo</label>
-                    <input type="text" id="endereco" name="endereco" placeholder="Rua, Número, Bairro, Cidade" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="tipo_moradia">Tipo de Moradia</label>
-                    <select id="tipo_moradia" name="tipo_moradia" required>
-                        <option value="" disabled selected>Selecione...</option>
-                        <option value="Casa">Casa</option>
-                        <option value="Apartamento">Apartamento</option>
-                        <option value="Sítio/Chácara">Sítio / Chácara</option>
-                        <option value="Outro">Outro</option>
-                    </select>
-                </div>
-
-                <!-- Seção 4: Perguntas Importantes -->
-                <h3 class="section-title"><i class="fas fa-question-circle"></i> Perguntas Rápidas</h3>
-
-                <div class="form-group">
-                    <label for="motivo">Por que você deseja adotar?</label>
-                    <textarea id="motivo" name="motivo" rows="3" maxlength="500" placeholder="Conte um pouco sobre sua motivação..." required></textarea>
+                    <label>Por que deseja adotar?</label>
+                    <textarea name="motivo" rows="3" required placeholder="Conte um pouco sobre sua motivação..."></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label for="outros_animais">Possui outros animais? Se sim, quais?</label>
-                    <textarea id="outros_animais" name="outros_animais" rows="2" placeholder="Ex: Tenho um gato de 3 anos castrado."></textarea>
+                    <label>Possui outros animais? Quais?</label>
+                    <textarea name="outros_animais" rows="2" placeholder="Ex: Sim, um gato de 3 anos."></textarea>
                 </div>
 
-                <div class="form-group checkbox-group">
-                    <label for="concorda_termos">
-                        <input type="checkbox" id="concorda_termos_check" required onchange="atualizarSelect(this)">
-                        Estou ciente da entrevista por videochamada e da taxa de contribuição de R$200,00 (caso aprovado).
-                    </label>
-                    <!-- Campo oculto para enviar valor 1 ou 0 para o banco -->
-                    <select id="concorda_termos" name="concorda_termos" style="display:none;">
-                        <option value="0">Não</option>
-                        <option value="1">Sim</option>
-                    </select>
+                <!-- Checkbox -->
+                <div class="form-group" style="margin-top: 20px; display: flex; gap: 10px; align-items: center;">
+                    <input type="checkbox" id="concorda_check" required style="width: 20px; height: 20px;">
+                    <label for="concorda_check" style="margin:0; font-weight:normal;">Estou ciente que a adoção passa por análise e entrevista.</label>
+                    <input type="hidden" name="concorda_termos" value="1">
                 </div>
 
-                <button type="submit" id="submit-button" class="btn-enviar">
+                <button type="submit" id="submit-button" class="btn-submit">
                     <i class="fas fa-paper-plane"></i> Enviar Cadastro
                 </button>
+
+                <div style="text-align: center; margin-top: 15px;">
+                    <a href="adote.html" style="color: #666; font-size: 0.9rem; text-decoration: underline;">Cancelar e Voltar</a>
+                </div>
             </form>
         </div>
     </div>
 
     <footer class="rodape">
-        <div class="sobre-rodape">
-            <img src="imagens/logo-extensa.png" alt="logo extensa">
-            <p>Somos uma ONG que resgata animais em situação de rua e maus tratos, cuidados e direcionamos para adoções responsáveis.</p>
-        </div>
-        <div class="contato-rodape">
-            <a href="https://www.google.com/maps?q=Av.+Jos%C3%A9+Estima+Filho+-+Parque+Santa+Barbara,+S%C3%A3o+Paulo+-+SP,+Brasil"><img src="imagens/mapa.jpg" alt="mapa" class="mapa"></a>
-            <p>Endereço: Av. José Estima Filho - Jardim Ângela</p>
-        </div>
+        <img src="imagens/logo-extensa.png" alt="Logo">
+        <p>Av. José Estima Filho - Jardim Ângela</p>
     </footer>
 
+    <script src="main.js"></script>
     <script>
-        function atualizarSelect(checkbox) {
-            const select = document.getElementById('concorda_termos');
-            select.value = checkbox.checked ? "1" : "0";
-        }
-
-        function preencherAnimal() {
+        // Script para pegar o nome do animal da URL (caso venha da página Adote)
+        window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
-            const nomeAnimal = urlParams.get('animal');
-
-            if (nomeAnimal) {
-                document.getElementById('animal_desejado').value = decodeURIComponent(nomeAnimal);
+            const animal = urlParams.get('animal');
+            if(animal) {
+                document.getElementById('animal_desejado').value = decodeURIComponent(animal);
             } else {
-                document.getElementById('animal_desejado').value = "Nenhum animal selecionado (Vá em 'Adote')";
+                document.getElementById('animal_desejado').value = "Nenhum selecionado (Preencha manualmente ou volte)";
+                document.getElementById('animal_desejado').classList.remove('input-readonly');
+                document.getElementById('animal_desejado').removeAttribute('readonly');
             }
-        }
+        };
 
-        async function enviarFormulario(event) {
-            event.preventDefault();
-            const form = document.getElementById('form-adocao');
-            const button = document.getElementById('submit-button');
-            const formData = new FormData(form);
+        // Envio do Form
+        document.getElementById('form-adocao').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submit-button');
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            btn.disabled = true;
 
-            button.disabled = true;
-            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-
+            const formData = new FormData(this);
             try {
-                const response = await fetch('api/cadastros/criar_cadastro.php', {
-                    method: 'POST',
-                    body: formData
-                });
-
-                if (!response.ok) {
-                    const errorText = await response.text();
-                    throw new Error(`Erro na API: ${response.statusText}`);
-                }
-
-                const resultado = await response.json();
-
-                if (resultado.success) {
-                    alert('✅ Cadastro enviado com sucesso! Entraremos em contato pelo Instagram.');
-                    form.reset();
+                const req = await fetch('api/cadastros/criar_cadastro.php', { method:'POST', body:formData });
+                const res = await req.json();
+                if(res.success) {
+                    alert('Cadastro enviado com sucesso!');
                     window.location.href = 'inicio.html';
                 } else {
-                    alert('❌ Erro: ' + (resultado.error || 'Erro desconhecido.'));
+                    alert('Erro: ' + res.error);
                 }
-
-            } catch (error) {
-                console.error('Erro:', error);
-                alert('Ocorreu um erro de comunicação. Tente novamente.');
+            } catch(err) {
+                alert('Erro de conexão (Backend offline?)');
             } finally {
-                button.disabled = false;
-                button.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Cadastro';
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Cadastro';
+                btn.disabled = false;
             }
-        }
-
-        window.onload = preencherAnimal;
-        document.getElementById('form-adocao').addEventListener('submit', enviarFormulario);
+        });
+        
+        document.getElementById('menu-toggle').onclick = () => document.getElementById('nav-list').classList.toggle('active');
     </script>
 </body>
 </html>
